@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB3B63BDA9191207D555BF49 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6DD41DA4FCC7A8C9C823 /* hid.c */; };
+		AB3B6B519F20023EFE7580E4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6A6A8C0039B96B05E571 /* main.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB3B66E056F3DE19E69C3BD8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AB3B603B3C7EC8EB2EE5DDCE /* configure.ac */ = {isa = PBXFileReference; lastKnownFileType = file.ac; path = configure.ac; sourceTree = "<group>"; };
+		AB3B60E7E1732AE72B1E636D /* HuiDriver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HuiDriver; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB3B611FD23376C3EA372577 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		AB3B640D743ED395AD3B8D11 /* AUTHORS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS.txt; sourceTree = "<group>"; };
+		AB3B65374F74E2BEEC27EB6E /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
+		AB3B65F313DB5F7D8D598AA1 /* Makefile-manual */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Makefile-manual"; sourceTree = "<group>"; };
+		AB3B672671E4012EE82FE769 /* hidapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hidapi.h; sourceTree = "<group>"; };
+		AB3B6770E96DC0A3CEDD3E72 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		AB3B67E807AAAD5727463953 /* HACKING.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HACKING.txt; sourceTree = "<group>"; };
+		AB3B68259E3F4370853F040D /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
+		AB3B6955EB83CCD5CF3C0B88 /* LICENSE-bsd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-bsd.txt"; sourceTree = "<group>"; };
+		AB3B69DB5F1992B2C62DA81B /* LICENSE-gpl3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-gpl3.txt"; sourceTree = "<group>"; };
+		AB3B6A6A8C0039B96B05E571 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		AB3B6AEF5AE15692578B06C0 /* LICENSE-orig.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-orig.txt"; sourceTree = "<group>"; };
+		AB3B6C9D692B2E1DB091E9FD /* bootstrap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bootstrap; sourceTree = "<group>"; };
+		AB3B6D36CBB9EB5B919EB10B /* 99-hid.rules */ = {isa = PBXFileReference; lastKnownFileType = file.rules; path = "99-hid.rules"; sourceTree = "<group>"; };
+		AB3B6DD41DA4FCC7A8C9C823 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
+		AB3B6DF3C05990CE3B713734 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB3B6F4E8D4D5614C19C653B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB3B60A6609941098C819903 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B6DD41DA4FCC7A8C9C823 /* hid.c */,
+				AB3B6DF3C05990CE3B713734 /* .gitignore */,
+				AB3B68259E3F4370853F040D /* Makefile.am */,
+				AB3B65F313DB5F7D8D598AA1 /* Makefile-manual */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
+		AB3B60CCC7FED1E9DC3F505B /* HuiDriver */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B6A6A8C0039B96B05E571 /* main.c */,
+				AB3B6F10F5DFBE1ED014D9AB /* hidapi */,
+			);
+			path = HuiDriver;
+			sourceTree = "<group>";
+		};
+		AB3B638950C4F77EDEB1EFA0 /* udev */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B6D36CBB9EB5B919EB10B /* 99-hid.rules */,
+			);
+			path = udev;
+			sourceTree = "<group>";
+		};
+		AB3B64F368FCFF809F648E58 /* hidapi */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B672671E4012EE82FE769 /* hidapi.h */,
+			);
+			path = hidapi;
+			sourceTree = "<group>";
+		};
+		AB3B69A78AD7A3427A5AEB56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B60E7E1732AE72B1E636D /* HuiDriver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB3B6EFFB022528A2B52DFCF = {
+			isa = PBXGroup;
+			children = (
+				AB3B69A78AD7A3427A5AEB56 /* Products */,
+				AB3B60CCC7FED1E9DC3F505B /* HuiDriver */,
+			);
+			sourceTree = "<group>";
+		};
+		AB3B6F10F5DFBE1ED014D9AB /* hidapi */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B60A6609941098C819903 /* mac */,
+				AB3B638950C4F77EDEB1EFA0 /* udev */,
+				AB3B64F368FCFF809F648E58 /* hidapi */,
+				AB3B6C9D692B2E1DB091E9FD /* bootstrap */,
+				AB3B611FD23376C3EA372577 /* README.txt */,
+				AB3B640D743ED395AD3B8D11 /* AUTHORS.txt */,
+				AB3B67E807AAAD5727463953 /* HACKING.txt */,
+				AB3B6770E96DC0A3CEDD3E72 /* LICENSE.txt */,
+				AB3B65374F74E2BEEC27EB6E /* Makefile.am */,
+				AB3B603B3C7EC8EB2EE5DDCE /* configure.ac */,
+				AB3B6955EB83CCD5CF3C0B88 /* LICENSE-bsd.txt */,
+				AB3B69DB5F1992B2C62DA81B /* LICENSE-gpl3.txt */,
+				AB3B6AEF5AE15692578B06C0 /* LICENSE-orig.txt */,
+			);
+			path = hidapi;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB3B6B4F901FB6D4A46F943B /* HuiDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB3B65F12F7276D6E0AD6044 /* Build configuration list for PBXNativeTarget "HuiDriver" */;
+			buildPhases = (
+				AB3B67C9DF96772633D0EC20 /* Sources */,
+				AB3B6F4E8D4D5614C19C653B /* Frameworks */,
+				AB3B66E056F3DE19E69C3BD8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HuiDriver;
+			productName = HuiDriver;
+			productReference = AB3B60E7E1732AE72B1E636D /* HuiDriver */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB3B63D57CDD7531F7B6DB51 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = adONis;
+			};
+			buildConfigurationList = AB3B67BB92BC8DA88A26364B /* Build configuration list for PBXProject "HuiDriver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AB3B6EFFB022528A2B52DFCF;
+			productRefGroup = AB3B69A78AD7A3427A5AEB56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB3B6B4F901FB6D4A46F943B /* HuiDriver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB3B67C9DF96772633D0EC20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB3B6B519F20023EFE7580E4 /* main.c in Sources */,
+				AB3B63BDA9191207D555BF49 /* hid.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AB3B60B2AB5D534EC9539C9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AB3B698B4128848956917D52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AB3B69A10CF271B1BBDB71DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AB3B6C2F0F003A381279158F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB3B65F12F7276D6E0AD6044 /* Build configuration list for PBXNativeTarget "HuiDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB3B60B2AB5D534EC9539C9C /* Debug */,
+				AB3B69A10CF271B1BBDB71DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AB3B67BB92BC8DA88A26364B /* Build configuration list for PBXProject "HuiDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB3B6C2F0F003A381279158F /* Debug */,
+				AB3B698B4128848956917D52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB3B63D57CDD7531F7B6DB51 /* Project object */;
+}
