@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7AFB97B61A2E7D8D0032F351 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AFB97B51A2E7D8D0032F351 /* pen.png */; };
+		7AFB97B81A2E81BA0032F351 /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AFB97B71A2E81BA0032F351 /* buttons.png */; };
+		7AFB97D71A33237C0032F351 /* hotcells.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AFB97D61A33237C0032F351 /* hotcells.png */; };
+		7AFB97D91A3327480032F351 /* h610p.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AFB97D81A3327480032F351 /* h610p.png */; };
+		AB3B60EC2AFE40BCBA8974E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB3B6364B0F2D72603216B02 /* Images.xcassets */; };
+		AB3B6135BA2B1519415715CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B655D6162E28957EB17DF /* AppDelegate.swift */; };
+		AB3B618F50BE1A90B17F26F9 /* HuiGuiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B686EB94C3CC42EDBFF30 /* HuiGuiTests.swift */; };
+		AB3B69C3C773EF74CE431ED5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3B6A387A907BB5F0F19FA9 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB3B6E6A1588D68C7960C202 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB3B6232245A559441AB7A49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB3B6031E008C1A784131EB2;
+			remoteInfo = HuiGui;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7AFB97B51A2E7D8D0032F351 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
+		7AFB97B71A2E81BA0032F351 /* buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttons.png; sourceTree = "<group>"; };
+		7AFB97D61A33237C0032F351 /* hotcells.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotcells.png; sourceTree = "<group>"; };
+		7AFB97D81A3327480032F351 /* h610p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = h610p.png; sourceTree = "<group>"; };
+		AB3B6364B0F2D72603216B02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AB3B638867EA2E2D7F9A4345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		AB3B65386791D0C490D087B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		AB3B655D6162E28957EB17DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB3B686EB94C3CC42EDBFF30 /* HuiGuiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuiGuiTests.swift; sourceTree = "<group>"; };
+		AB3B68B79FBCC623E0F750AA /* HuiGuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuiGuiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB3B6DD65A6D88BA06601346 /* HuiGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuiGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB3B6F5DA0490F3110AD8289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB3B62CDCB1402EED3829A71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB3B6CAC5A1F0EF2AF728F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7AFB97B41A2E7D6E0032F351 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				7AFB97D81A3327480032F351 /* h610p.png */,
+				7AFB97D61A33237C0032F351 /* hotcells.png */,
+				7AFB97B71A2E81BA0032F351 /* buttons.png */,
+				7AFB97B51A2E7D8D0032F351 /* pen.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		AB3B60EE204C0161AF399966 = {
+			isa = PBXGroup;
+			children = (
+				AB3B626A250E8DF72AA42441 /* Products */,
+				AB3B6F41C17C044E243B832E /* HuiGui */,
+				AB3B63604A0D7FAA3949E41E /* HuiGuiTests */,
+			);
+			sourceTree = "<group>";
+		};
+		AB3B626A250E8DF72AA42441 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B6DD65A6D88BA06601346 /* HuiGui.app */,
+				AB3B68B79FBCC623E0F750AA /* HuiGuiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB3B63604A0D7FAA3949E41E /* HuiGuiTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B6B5AC171BB5D3B574AB5 /* Supporting Files */,
+				AB3B686EB94C3CC42EDBFF30 /* HuiGuiTests.swift */,
+			);
+			path = HuiGuiTests;
+			sourceTree = "<group>";
+		};
+		AB3B665E3983C514301530B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B638867EA2E2D7F9A4345 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB3B6B5AC171BB5D3B574AB5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB3B65386791D0C490D087B9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB3B6F41C17C044E243B832E /* HuiGui */ = {
+			isa = PBXGroup;
+			children = (
+				7AFB97B41A2E7D6E0032F351 /* images */,
+				AB3B665E3983C514301530B0 /* Supporting Files */,
+				AB3B6364B0F2D72603216B02 /* Images.xcassets */,
+				AB3B655D6162E28957EB17DF /* AppDelegate.swift */,
+				AB3B6A387A907BB5F0F19FA9 /* MainMenu.xib */,
+			);
+			path = HuiGui;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB3B6031E008C1A784131EB2 /* HuiGui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB3B60069A25343397DBF53C /* Build configuration list for PBXNativeTarget "HuiGui" */;
+			buildPhases = (
+				AB3B66BC2C4A13CB6B77BBAD /* Sources */,
+				AB3B6CAC5A1F0EF2AF728F41 /* Frameworks */,
+				AB3B6F17AD905355103B064A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HuiGui;
+			productName = HuiGui;
+			productReference = AB3B6DD65A6D88BA06601346 /* HuiGui.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB3B67BABEE61577977E484D /* HuiGuiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB3B6467EC3C65E53BEE51B3 /* Build configuration list for PBXNativeTarget "HuiGuiTests" */;
+			buildPhases = (
+				AB3B6D4269F945221074FDBD /* Sources */,
+				AB3B62CDCB1402EED3829A71 /* Frameworks */,
+				AB3B62798F187CBAB9CC945A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB3B6C34D0A343AF0980B26E /* PBXTargetDependency */,
+			);
+			name = HuiGuiTests;
+			productName = HuiGuiTests;
+			productReference = AB3B68B79FBCC623E0F750AA /* HuiGuiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB3B6232245A559441AB7A49 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = adONis;
+			};
+			buildConfigurationList = AB3B64F0D0E653307FF40D8E /* Build configuration list for PBXProject "HuiGui" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AB3B60EE204C0161AF399966;
+			productRefGroup = AB3B626A250E8DF72AA42441 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB3B6031E008C1A784131EB2 /* HuiGui */,
+				AB3B67BABEE61577977E484D /* HuiGuiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB3B62798F187CBAB9CC945A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB3B6F17AD905355103B064A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AFB97B61A2E7D8D0032F351 /* pen.png in Resources */,
+				7AFB97B81A2E81BA0032F351 /* buttons.png in Resources */,
+				7AFB97D71A33237C0032F351 /* hotcells.png in Resources */,
+				7AFB97D91A3327480032F351 /* h610p.png in Resources */,
+				AB3B60EC2AFE40BCBA8974E9 /* Images.xcassets in Resources */,
+				AB3B69C3C773EF74CE431ED5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB3B66BC2C4A13CB6B77BBAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB3B6135BA2B1519415715CB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB3B6D4269F945221074FDBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB3B618F50BE1A90B17F26F9 /* HuiGuiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB3B6C34D0A343AF0980B26E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB3B6031E008C1A784131EB2 /* HuiGui */;
+			targetProxy = AB3B6E6A1588D68C7960C202 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AB3B6A387A907BB5F0F19FA9 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB3B6F5DA0490F3110AD8289 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB3B62D7CDF053C069FCC4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AB3B65BBBC79680909B3EA23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HuiGui.app/Contents/MacOS/HuiGui";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HuiGuiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+		AB3B65BCD69DC23EEBB180F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB3B6ECBD4D868DEE1112A50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HuiGui/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AB3B6F1A0C65278EA10759CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HuiGui.app/Contents/MacOS/HuiGui";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HuiGuiTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		AB3B6FF58B08A20F735EB639 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HuiGui/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB3B60069A25343397DBF53C /* Build configuration list for PBXNativeTarget "HuiGui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB3B6ECBD4D868DEE1112A50 /* Debug */,
+				AB3B6FF58B08A20F735EB639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB3B6467EC3C65E53BEE51B3 /* Build configuration list for PBXNativeTarget "HuiGuiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB3B6F1A0C65278EA10759CB /* Debug */,
+				AB3B65BBBC79680909B3EA23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB3B64F0D0E653307FF40D8E /* Build configuration list for PBXProject "HuiGui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB3B65BCD69DC23EEBB180F1 /* Debug */,
+				AB3B62D7CDF053C069FCC4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB3B6232245A559441AB7A49 /* Project object */;
+}
