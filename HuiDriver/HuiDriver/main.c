@@ -23,6 +23,19 @@ X-pos = [3][2]
 Y-pos = [5][4]
 Pres. = [7][6]
 
+Kecodes:
+
+118
+1
+78
+
+69
+5
+
+9
+7
+8
+
 
 @TODO:
 - get tablet buttons to work
@@ -39,6 +52,15 @@ Pres. = [7][6]
 #define PENBUTTON_TIPBUTTON1 195
 #define PENBUTTON_BUTTON2 196
 #define PENBUTTON_TIPBUTTON2 197
+
+#define TABLETBUTTON1 118
+#define TABLETBUTTON2 1
+#define TABLETBUTTON3 78
+#define TABLETBUTTON4 69
+#define TABLETBUTTON5 5
+#define TABLETBUTTON6 9
+#define TABLETBUTTON7 7
+#define TABLETBUTTON8 8
 
 #define SLEEPTIME 1200
 
@@ -77,8 +99,11 @@ double screenWidth;
 double screenHeight;
 
 int buttonLeftDown = 0;
+int buttonRightDown = 0;
 
-CGEventRef moveMouse, dragMouse, clickLeftMouse, releaseLeftMouse, mouseEvent;
+CGEventRef moveMouse;
+CGEventRef leftMouse;
+CGEventRef rightMouse;
 
 
 struct hid_device_info;
@@ -87,47 +112,111 @@ double screenSpan;
 
 double valueScaled;
 
+int tabletDeviceOpen = 0;
+int tabletDataReceived = 0;
+
+
+
+int initDevice() {
+
+    if(tabletDeviceOpen == 1 && tabletDataReceived == 1) {
+        return 1;
+    }
+
+
+    // Set up the command buffer.
+
+    memset(buf,0x00,sizeof(buf));
+
+    res = 0;
+
+    while(tabletDataReceived == 0) {
+//        printf("inwhile\n");
+        // and optionally the Serial number.
+        ////handle = hid_open(0x4d8, 0x3f, L"12345");
+        if(tabletDeviceOpen == 0) {
+//            printf("init\n");
+            handle = hid_open(0x256c, 0x006e, NULL);
+            if(handle) {
+//                printf("device open\n");
+                tabletDeviceOpen = 1;
+            }
+
+        } else {
+            hid_set_nonblocking(handle, 1);
+            usleep(50000);
+            res = hid_read(handle, buf, sizeof(buf));
+            if(res > 0) {
+                if(tabletDataReceived == 0) {
+                    tabletDataReceived = 1;
+                }
+            }
+            if(tabletDataReceived == 0) {
+                tabletDeviceOpen = 0;
+                hid_close(handle);
+            }
+        }
+
+        // Set the hid_read() function to be non-blocking.
+    }
+
+    printf("DEVICE READY!\n");
+    return 1;
+}
+
 
 /**
 * move mouse without touching the tablet
 */
 void doMouseMove(double x, double y) {
 
+    CGEventSetType(moveMouse, kCGEventMouseMoved);
     CGEventSetLocation(moveMouse, CGPointMake(x, y));
-    CGEventSetLocation(releaseLeftMouse, CGPointMake(x, y));
 
     if(buttonLeftDown == 1) {
         buttonLeftDown = 0;
-        CGEventSetLocation(releaseLeftMouse, CGPointMake(x, y));
-        CGEventPost(kCGHIDEventTap, releaseLeftMouse);
-//        CFRelease(releaseLeftMouse);
-//        CFRelease(dragMouse);
+        CGEventSetLocation(leftMouse, CGPointMake(x, y));
+        CGEventSetType(leftMouse, kCGEventLeftMouseUp);
+        CGEventPost(kCGHIDEventTap, leftMouse);
     }
 
-    CGEventPost(kCGHIDEventTap, moveMouse);
+    if(buttonRightDown == 1) {
+        buttonRightDown = 0;
+        CGEventSetLocation(rightMouse, CGPointMake(x, y));
+        CGEventSetType(rightMouse, kCGEventRightMouseUp);
+        CGEventPost(kCGHIDEventTap, rightMouse);
+    }
+}
+
+void doRightMouseClick(double x, double y) {
+    if(buttonRightDown == 0) {
+        CGEventSetLocation(rightMouse, CGPointMake(x, y));
+        CGEventSetType(rightMouse, kCGEventRightMouseDown);
+        CGEventPost(kCGHIDEventTap, rightMouse);
+        buttonRightDown = 1;
+    }
 }
 
 void doMouseMoveDrag(double x, double y, double pressure) {
 
-    CGEventSetLocation(dragMouse, CGPointMake(x, y));
+    CGEventSetType(moveMouse, kCGEventLeftMouseDragged);
 
+    CGEventSetLocation(moveMouse, CGPointMake(x, y));
 
-    CGEventSetDoubleValueField(dragMouse, kCGMouseEventPressure, pressure);
-    CGEventSetIntegerValueField(dragMouse, kCGMouseEventSubtype, kCGEventMouseSubtypeTabletPoint);
-//    CGEventSetIntegerValueField(dragMouse, kCGTabletEventPointPressure, pressure);
+    CGEventSetDoubleValueField(moveMouse, kCGMouseEventPressure, pressure);
+    CGEventSetIntegerValueField(moveMouse, kCGMouseEventSubtype, kCGEventMouseSubtypeTabletPoint);
 
+    CGEventSetDoubleValueField(leftMouse, kCGMouseEventPressure, pressure);
+    CGEventSetIntegerValueField(leftMouse, kCGMouseEventSubtype, kCGEventMouseSubtypeTabletPoint);
 
-    CGEventSetDoubleValueField(clickLeftMouse, kCGMouseEventPressure, pressure);
-    CGEventSetIntegerValueField(clickLeftMouse, kCGMouseEventSubtype, kCGEventMouseSubtypeTabletPoint);
-//    CGEventSetIntegerValueField(clickLeftMouse, kCGTabletEventPointPressure, pressure);
     if(buttonLeftDown == 0) {
 //        printf("here\n");
         buttonLeftDown = 1;
-        CGEventSetLocation(clickLeftMouse, CGPointMake(x, y));
-        CGEventPost(kCGHIDEventTap, clickLeftMouse);
+        CGEventSetLocation(leftMouse, CGPointMake(x, y));
+        CGEventSetType(leftMouse, kCGEventLeftMouseDown);
+        CGEventPost(kCGHIDEventTap, leftMouse);
     }
 //
-    CGEventPost(kCGHIDEventTap, dragMouse);
 }
 
 void handleMouse(double x, double y, double pressure, int penButton) {
@@ -139,12 +228,14 @@ void handleMouse(double x, double y, double pressure, int penButton) {
     } else if (penButton == PENBUTTON_TIPBUTTON1) {
 
     } else if (penButton == PENBUTTON_BUTTON2) {
-
+        doRightMouseClick(x, y);
     } else if (penButton == PENBUTTON_TIPBUTTON2) {
 
     } else {
         doMouseMove(x, y);
     }
+
+    CGEventPost(kCGHIDEventTap, moveMouse);
 
 
 }
@@ -195,7 +286,7 @@ double calculatePMouse(int pPen) {
 }
 
 
-void handleTablet() {
+int handleTablet() {
 
     res = hid_read(handle, buf, sizeof(buf));
     usleep(SLEEPTIME);
@@ -208,7 +299,7 @@ void handleTablet() {
             yPen = calcPenValue((int) buf[4], (int) buf[5]);
             pPen = calcPenValue((int) buf[6], (int) buf[7]);
 //
-////          printf("%d %d\n", yPen);
+//          printf("%d %d\n", yPen);
             if(calculateYMouse(yPen) > 0) {
                 xMouse = calculateXMouse(xPen);
                 yMouse = calculateYMouse(yPen);
@@ -216,18 +307,35 @@ void handleTablet() {
 
                 handleMouse(xMouse, yMouse, pMouse, (int) buf[1]);
             }
-////            printf("mousepos: %d, %f, %f, %d, %f, %f \n",xPen, xRatio, xMouse, yPen, yRatio, yMouse);
+//            printf("mousepos: %d, %f, %f, %d, %f, %f \n",xPen, xRatio, xMouse, yPen, yRatio, yMouse);
 //            printf("%02hhx ", buf[i]);
         }
-////        printf("\n");
+//        printf("\n");
+        return 1;
     }
 
+    return 0;
+
+}
 
 
-//    hid_close(handle);
 
-    /* Free static HIDAPI objects. */
-//    hid_exit();
+CFMachPortRef      eventTap;
+CGEventMask        eventMask;
+CFRunLoopSourceRef runLoopSource;
+
+
+CGEventRef handleCGEvent(CGEventTapProxy proxy, CGEventType type, CGEventRef eventRef, void *refcon) {
+      initDevice();
+//    if(tabletDeviceOpen == 1) {
+    handleTablet();
+//    }
+
+    // Set the hid_read() function to be non-blocking.
+//    handleTablet();
+
+    printf("%d\n", type);
+    return eventRef;
 }
 
 
@@ -242,37 +350,8 @@ int main(int argc, char* argv[]) {
     pRatio = 0.00048;
 
 
-    if (hid_init()) {
-        return -1;
-    }
 
-
-    // Set up the command buffer.
-
-    memset(buf,0x00,sizeof(buf));
-//    buf[0] = 0x01;
-//    buf[1] = 0x81;
-
-
-    // and optionally the Serial number.
-    ////handle = hid_open(0x4d8, 0x3f, L"12345");
-    handle = hid_open(0x256c, 0x006e, NULL);
-    if (!handle) {
-        printf("unable to open device\n");
-        return 1;
-    } else {
-        printf("device open\n");
-    }
-
-    // Set the hid_read() function to be non-blocking.
-    hid_set_nonblocking(handle, 1);
-
-
-    // Read requested state. hid_read() has been set to be
-    // non-blocking by the call to hid_set_nonblocking() above.
-    // This loop demonstrates the non-blocking nature of hid_read().
-    res = 0;
-
+    initDevice();
 
 
     moveMouse = CGEventCreateMouseEvent(
@@ -281,23 +360,46 @@ int main(int argc, char* argv[]) {
             kCGMouseButtonLeft // ignored
     );
 
-    dragMouse = CGEventCreateMouseEvent(
-            NULL, kCGEventLeftMouseDragged,
-            CGPointMake(0, 0),
-            kCGMouseButtonLeft // ignored
-    );
-
-    clickLeftMouse = CGEventCreateMouseEvent(
+    leftMouse = CGEventCreateMouseEvent(
             NULL, kCGEventLeftMouseDown,
             CGPointMake(0,0),
             kCGMouseButtonLeft
     );
 
-    releaseLeftMouse = CGEventCreateMouseEvent(
-            NULL, kCGEventLeftMouseUp,
+    rightMouse = CGEventCreateMouseEvent(
+            NULL, kCGEventRightMouseDown,
             CGPointMake(0, 0),
-            kCGMouseButtonLeft
+            kCGMouseButtonRight
     );
+
+
+
+
+//    // Create an event tap. We are interested in key presses.
+//    eventTap = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, kCGEventTapOptionDefault,
+//            kCGEventMaskForAllEvents, handleCGEvent, NULL);
+//    if (!eventTap) {
+//        fprintf(stderr, "failed to create event tap\n");
+//        exit(1);
+//    }
+//
+//    // Create a run loop source.
+//    runLoopSource = CFMachPortCreateRunLoopSource(
+//            kCFAllocatorDefault, eventTap, 0);
+//
+//    // Add to the current run loop.
+//    CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource,
+//            kCFRunLoopCommonModes);
+//
+//    // Enable the event tap.
+//    CGEventTapEnable(eventTap, true);
+//
+//    // Set it all running.
+//    CFRunLoopRun();
+
+
+
+
 
     while(1) {
         handleTablet();
