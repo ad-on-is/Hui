@@ -112,6 +112,9 @@ double screenSpan;
 
 double valueScaled;
 
+int keyboard = 0;
+CGKeyCode keycode;
+
 int tabletDeviceOpen = 0;
 int tabletDataReceived = 0;
 int tabletInit = 0;
@@ -334,15 +337,21 @@ CFRunLoopSourceRef runLoopSource;
 
 CGEventRef
 myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
-        CGEventRef event, void *refcon)
-{
+        CGEventRef event, void *refcon) {
     // Paranoid sanity check.
     if ((type != kCGEventKeyDown) && (type != kCGEventKeyUp))
         return event;
 
-    // The incoming keycode.
-    CGKeyCode keycode = (CGKeyCode)CGEventGetIntegerValueField(
-            event, kCGKeyboardEventKeycode);
+    keyboard = CGEventGetIntegerValueField(event, kCGKeyboardEventKeyboardType);
+
+    if (keyboard != 40) {
+        return event;
+    }
+
+    keycode = (CGKeyCode) CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
+
+    printf("%d\n", keycode);
+
 
     // Swap 'a' (keycode=0) and 'z' (keycode=6).
 //    if (keycode == (CGKeyCode)0)
@@ -350,15 +359,12 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 //    else if (keycode == (CGKeyCode)6)
 //        keycode = (CGKeyCode)0;
 
-    printf("%d\n", CGEventGetFlags(event));
 
-    if(keycode == TABLETBUTTON1 || keycode == TABLETBUTTON2 || keycode == TABLETBUTTON3 || keycode == TABLETBUTTON4 || keycode == TABLETBUTTON5 || keycode == TABLETBUTTON6 || keycode == TABLETBUTTON7 || keycode == TABLETBUTTON8) {
-//        return false;
+    if (keycode == TABLETBUTTON1 || keycode == TABLETBUTTON2 || keycode == TABLETBUTTON3 || keycode == TABLETBUTTON4 || keycode == TABLETBUTTON5 || keycode == TABLETBUTTON6 || keycode == TABLETBUTTON7 || keycode == TABLETBUTTON8) {
+        return false;
     }
-
     // Set the modified keycode field in the event.
-    CGEventSetIntegerValueField(
-            event, kCGKeyboardEventKeycode, (int64_t)keycode);
+    CGEventSetIntegerValueField(event, kCGKeyboardEventKeycode, (int64_t) keycode);
 
     // We must return the event for it to be useful.
     return event;
@@ -380,12 +386,10 @@ void handleButtons() {
     }
 
     // Create a run loop source.
-    runLoopSource = CFMachPortCreateRunLoopSource(
-            kCFAllocatorDefault, eventTap, 0);
+    runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
 
     // Add to the current run loop.
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource,
-            kCFRunLoopCommonModes);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
 
     // Enable the event tap.
     CGEventTapEnable(eventTap, true);
@@ -403,16 +407,13 @@ int main(int argc, char* argv[]) {
 
     if(pid == 0) {
         handleButtons();
-    } else {
+    } else if (pid > 0) {
 
         screenWidth = CGDisplayPixelsWide(CGMainDisplayID());
         screenHeight = CGDisplayPixelsHigh(CGMainDisplayID());
 
         xRatio = screenWidth/SENSITIVITY_LEVELS;
         pRatio = 0.00048;
-
-
-
 
 
         moveMouse = CGEventCreateMouseEvent(
@@ -433,14 +434,14 @@ int main(int argc, char* argv[]) {
                 kCGMouseButtonRight
         );
 
-
-
         initDevice();
 
         while(1) {
             handleTablet();
         }
 
+    } else {
+        exit(1);
     }
 
 
