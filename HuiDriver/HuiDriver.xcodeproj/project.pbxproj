@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A9343801A3BA55A00F034C2 /* libconfig.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A93437F1A3BA55A00F034C2 /* libconfig.9.dylib */; };
 		AB3B63BDA9191207D555BF49 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6DD41DA4FCC7A8C9C823 /* hid.c */; };
 		AB3B6B519F20023EFE7580E4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6A6A8C0039B96B05E571 /* main.c */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A93437F1A3BA55A00F034C2 /* libconfig.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libconfig.9.dylib; path = HuiDriver/libconfig/lib/libconfig.9.dylib; sourceTree = "<group>"; };
 		AB3B603B3C7EC8EB2EE5DDCE /* configure.ac */ = {isa = PBXFileReference; lastKnownFileType = file.ac; path = configure.ac; sourceTree = "<group>"; };
 		AB3B60E7E1732AE72B1E636D /* HuiDriver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HuiDriver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3B611FD23376C3EA372577 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
@@ -34,6 +36,7 @@
 		AB3B6770E96DC0A3CEDD3E72 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AB3B67E807AAAD5727463953 /* HACKING.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HACKING.txt; sourceTree = "<group>"; };
 		AB3B68259E3F4370853F040D /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
+		AB3B68F368F407C404A22649 /* example.cfg */ = {isa = PBXFileReference; lastKnownFileType = file.cfg; path = example.cfg; sourceTree = "<group>"; };
 		AB3B6955EB83CCD5CF3C0B88 /* LICENSE-bsd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-bsd.txt"; sourceTree = "<group>"; };
 		AB3B69DB5F1992B2C62DA81B /* LICENSE-gpl3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-gpl3.txt"; sourceTree = "<group>"; };
 		AB3B6A6A8C0039B96B05E571 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9343801A3BA55A00F034C2 /* libconfig.9.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,7 @@
 			children = (
 				AB3B6A6A8C0039B96B05E571 /* main.c */,
 				AB3B6F10F5DFBE1ED014D9AB /* hidapi */,
+				AB3B68F368F407C404A22649 /* example.cfg */,
 			);
 			path = HuiDriver;
 			sourceTree = "<group>";
@@ -99,11 +104,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AB3B6BAC7DE8A9860248CD08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A93437F1A3BA55A00F034C2 /* libconfig.9.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB3B6EFFB022528A2B52DFCF = {
 			isa = PBXGroup;
 			children = (
 				AB3B69A78AD7A3427A5AEB56 /* Products */,
 				AB3B60CCC7FED1E9DC3F505B /* HuiDriver */,
+				AB3B6BAC7DE8A9860248CD08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,6 +202,18 @@
 		AB3B60B2AB5D534EC9539C9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PROJECT_DIR}/../../../../../Downloads/libconfig-lib\"/**",
+					"\"${PROJECT_DIR}/../../../../../Downloads/libconfig-lib\"/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"/Users/adonis/Downloads/libconfig-lib",
+					"\"${PROJECT_DIR}/HuiDriver/libconfig-1.4.9/tinytest\"/**",
+					/Users/adonis/Downloads/libconfig/lib,
+					"$(PROJECT_DIR)/HuiDriver/libconfig/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -229,6 +255,18 @@
 		AB3B69A10CF271B1BBDB71DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"${PROJECT_DIR}/../../../../../Downloads/libconfig-lib\"/**",
+					"\"${PROJECT_DIR}/../../../../../Downloads/libconfig-lib\"/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"/Users/adonis/Downloads/libconfig-lib",
+					"\"${PROJECT_DIR}/HuiDriver/libconfig-1.4.9/tinytest\"/**",
+					/Users/adonis/Downloads/libconfig/lib,
+					"$(PROJECT_DIR)/HuiDriver/libconfig/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -283,6 +321,7 @@
 				AB3B69A10CF271B1BBDB71DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB3B67BB92BC8DA88A26364B /* Build configuration list for PBXProject "HuiDriver" */ = {
 			isa = XCConfigurationList;
