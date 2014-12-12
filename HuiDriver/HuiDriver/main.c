@@ -38,8 +38,10 @@ Kecodes:
 
 
 @TODO:
-- get tablet buttons to work
-- reclean code
+- actions for tablet buttons (cmd, alt, keycode, ...)
+- write enums
+- leftmode
+- config file
 
 ********************************************************/
 
@@ -62,30 +64,32 @@ Kecodes:
 #define TABLETBUTTON7 7
 #define TABLETBUTTON8 8
 
+
 #define SLEEPTIME 1200
 
 #include <stdio.h>
 #include <wchar.h>
 #include <string.h>
 #include <stdlib.h>
-#include "hidapi.h"
+#include <math.h>
 #include <unistd.h>
-
 #include <ApplicationServices/ApplicationServices.h>
+#include "hidapi.h"
+#include "libconfig/lib/libconfig.h"
 
 
-int printMouse = 0;
+
 
 int res;
 unsigned char buf[256];
 hid_device *handle;
 
 int i;
-int ready = 0;
+int leftMode = 1;
 //
 double xMouse; // x-position for mouse
 double yMouse; // y-position for mouse
-double pMouse; // pressure for mouse
+double pMouse = 1; // pressure for mouse
 
 int xPen; // x-position of pen
 int yPen; // y-position of pen
@@ -267,7 +271,11 @@ void handleMouse(double x, double y, double pressure, int penButton) {
 *
 */
 
-double calcPenValue(int a, int b) {
+double calcPenValue(int a, int b, int leftMode) {
+    if(leftMode == 1) {
+//        printf("%f\n", fabs(2047.00-(a + (256*b))));
+        return fabs(2047.00-(a + (256*b)));
+    }
     return a + (256*b);
 }
 
@@ -295,7 +303,7 @@ double calculateXMouse(int xPen) {
 
 double calculatePMouse(int pPen) {
     // handle sensitivity
-    return pRatio * pPen;
+    return (pRatio * pPen) - 0.0003;
 }
 
 
@@ -308,9 +316,9 @@ void handleTablet() {
     if(res > 0) {
         for (i = 0; i < res; i++) {
 //
-            xPen = calcPenValue((int) buf[2], (int) buf[3]);
-            yPen = calcPenValue((int) buf[4], (int) buf[5]);
-            pPen = calcPenValue((int) buf[6], (int) buf[7]);
+            xPen = calcPenValue((int) buf[2], (int) buf[3], leftMode);
+            yPen = calcPenValue((int) buf[4], (int) buf[5], leftMode);
+            pPen = calcPenValue((int) buf[6], (int) buf[7], 0);
 //
 //          printf("%d %d\n", yPen);
             if(calculateYMouse(yPen) > 0) {
@@ -399,9 +407,93 @@ void handleButtons() {
 }
 
 
+void initSettings() {
+    config_t cfg;
+    config_setting_t *setting;
+    const char *str;
+
+    config_init(&cfg);
+
+    /* Read the file. If there is an error, report it and exit. */
+    if(! config_read_file(&cfg, "/Users/adonis/Documents/Projekte/C/Hui/HuiDriver/HuiDriver/example.cfg"))
+    {
+        fprintf(stderr, "%s:%d - %s\n", config_error_file(&cfg),
+                config_error_line(&cfg), config_error_text(&cfg));
+        config_destroy(&cfg);
+    }
+
+    /* Get the store name. */
+    if(config_lookup_string(&cfg, "name", &str))
+        printf("Store name: %s\n\n", str);
+    else
+        fprintf(stderr, "No 'name' setting in configuration file.\n");
+
+    /* Output a list of all books in the inventory. */
+    setting = config_lookup(&cfg, "inventory.books");
+    if(setting != NULL)
+    {
+        int count = config_setting_length(setting);
+        int i;
+
+        printf("%-30s  %-30s   %-6s  %s\n", "TITLE", "AUTHOR", "PRICE", "QTY");
+
+        for(i = 0; i < count; ++i)
+        {
+            config_setting_t *book = config_setting_get_elem(setting, i);
+
+            /* Only output the record if all of the expected fields are present. */
+            const char *title, *author;
+            double price;
+            int qty;
+
+            if(!(config_setting_lookup_string(book, "title", &title)
+                    && config_setting_lookup_string(book, "author", &author)
+                    && config_setting_lookup_float(book, "price", &price)
+                    && config_setting_lookup_int(book, "qty", &qty)))
+                continue;
+
+            printf("%-30s  %-30s  $%6.2f  %3d\n", title, author, price, qty);
+        }
+        putchar('\n');
+    }
+
+    /* Output a list of all movies in the inventory. */
+    setting = config_lookup(&cfg, "inventory.movies");
+    if(setting != NULL)
+    {
+        unsigned int count = config_setting_length(setting);
+        unsigned int i;
+
+        printf("%-30s  %-10s   %-6s  %s\n", "TITLE", "MEDIA", "PRICE", "QTY");
+        for(i = 0; i < count; ++i)
+        {
+            config_setting_t *movie = config_setting_get_elem(setting, i);
+
+            /* Only output the record if all of the expected fields are present. */
+            const char *title, *media;
+            double price;
+            int qty;
+
+            if(!(config_setting_lookup_string(movie, "title", &title)
+                    && config_setting_lookup_string(movie, "media", &media)
+                    && config_setting_lookup_float(movie, "price", &price)
+                    && config_setting_lookup_int(movie, "qty", &qty)))
+                continue;
+
+            printf("%-30s  %-10s  $%6.2f  %3d\n", title, media, price, qty);
+        }
+        putchar('\n');
+    }
+
+    config_destroy(&cfg);
+
+}
+
 
 int main(int argc, char* argv[]) {
 
+
+    initSettings();
 
     int pid = fork();
 
