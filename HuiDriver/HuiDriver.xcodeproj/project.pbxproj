@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A9343801A3BA55A00F034C2 /* libconfig.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A93437F1A3BA55A00F034C2 /* libconfig.9.dylib */; };
 		AB3B63BDA9191207D555BF49 /* hid.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6DD41DA4FCC7A8C9C823 /* hid.c */; };
+		AB3B6488C01BAE186DADA783 /* loadsettings.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6DEBD145489B18A6A7D4 /* loadsettings.c */; };
 		AB3B6B519F20023EFE7580E4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6A6A8C0039B96B05E571 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		7A93437F1A3BA55A00F034C2 /* libconfig.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libconfig.9.dylib; path = HuiDriver/libconfig/lib/libconfig.9.dylib; sourceTree = "<group>"; };
 		AB3B603B3C7EC8EB2EE5DDCE /* configure.ac */ = {isa = PBXFileReference; lastKnownFileType = file.ac; path = configure.ac; sourceTree = "<group>"; };
+		AB3B6043A8C231AE289CB2FA /* loadsettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loadsettings.h; sourceTree = "<group>"; };
 		AB3B60E7E1732AE72B1E636D /* HuiDriver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HuiDriver; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB3B611FD23376C3EA372577 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		AB3B640D743ED395AD3B8D11 /* AUTHORS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS.txt; sourceTree = "<group>"; };
@@ -36,14 +38,16 @@
 		AB3B6770E96DC0A3CEDD3E72 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		AB3B67E807AAAD5727463953 /* HACKING.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HACKING.txt; sourceTree = "<group>"; };
 		AB3B68259E3F4370853F040D /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = file.am; path = Makefile.am; sourceTree = "<group>"; };
-		AB3B68F368F407C404A22649 /* example.cfg */ = {isa = PBXFileReference; lastKnownFileType = file.cfg; path = example.cfg; sourceTree = "<group>"; };
+		AB3B68F368F407C404A22649 /* currentTablet.cfg */ = {isa = PBXFileReference; lastKnownFileType = file.cfg; path = currentTablet.cfg; sourceTree = "<group>"; };
 		AB3B6955EB83CCD5CF3C0B88 /* LICENSE-bsd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-bsd.txt"; sourceTree = "<group>"; };
 		AB3B69DB5F1992B2C62DA81B /* LICENSE-gpl3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-gpl3.txt"; sourceTree = "<group>"; };
 		AB3B6A6A8C0039B96B05E571 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		AB3B6AEF5AE15692578B06C0 /* LICENSE-orig.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-orig.txt"; sourceTree = "<group>"; };
+		AB3B6C486296574D78810F61 /* hui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hui.h; sourceTree = "<group>"; };
 		AB3B6C9D692B2E1DB091E9FD /* bootstrap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bootstrap; sourceTree = "<group>"; };
 		AB3B6D36CBB9EB5B919EB10B /* 99-hid.rules */ = {isa = PBXFileReference; lastKnownFileType = file.rules; path = "99-hid.rules"; sourceTree = "<group>"; };
 		AB3B6DD41DA4FCC7A8C9C823 /* hid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hid.c; sourceTree = "<group>"; };
+		AB3B6DEBD145489B18A6A7D4 /* loadsettings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loadsettings.c; sourceTree = "<group>"; };
 		AB3B6DF3C05990CE3B713734 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +79,10 @@
 			children = (
 				AB3B6A6A8C0039B96B05E571 /* main.c */,
 				AB3B6F10F5DFBE1ED014D9AB /* hidapi */,
-				AB3B68F368F407C404A22649 /* example.cfg */,
+				AB3B68F368F407C404A22649 /* currentTablet.cfg */,
+				AB3B6C486296574D78810F61 /* hui.h */,
+				AB3B6DEBD145489B18A6A7D4 /* loadsettings.c */,
+				AB3B6043A8C231AE289CB2FA /* loadsettings.h */,
 			);
 			path = HuiDriver;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 			files = (
 				AB3B6B519F20023EFE7580E4 /* main.c in Sources */,
 				AB3B63BDA9191207D555BF49 /* hid.c in Sources */,
+				AB3B6488C01BAE186DADA783 /* loadsettings.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
