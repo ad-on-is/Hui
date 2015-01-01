@@ -1,7 +1,7 @@
 #include "buttons.h"
 
 
-CGEventRef myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
+CGEventRef ButtonsEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     // Paranoid sanity check.
     if ((type != kCGEventKeyDown) && (type != kCGEventKeyUp))
         return event;
@@ -43,7 +43,7 @@ void handleButtons() {
     // Create an event tap. We are interested in key presses.
     eventMask = ((1 << kCGEventKeyDown) | (1 << kCGEventKeyUp));
     eventTap = CGEventTapCreate(kCGSessionEventTap, kCGHeadInsertEventTap, 0,
-            eventMask, myCGEventCallback, NULL);
+            eventMask, ButtonsEventCallback, NULL);
     if (!eventTap) {
         fprintf(stderr, "failed to create event tap\n");
         exit(1);

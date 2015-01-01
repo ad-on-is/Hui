@@ -1,4 +1,4 @@
-#include "loadsettings.h"
+#include "settings.h"
 
 void loadSettings() {
     config_t cfg;
