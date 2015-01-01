@@ -14,15 +14,6 @@
 #define PENBUTTON_BUTTON2 196
 #define PENBUTTON_TIPBUTTON2 197
 
-#define TABLETBUTTON1 118
-#define TABLETBUTTON2 1
-#define TABLETBUTTON3 78
-#define TABLETBUTTON4 69
-#define TABLETBUTTON5 5
-#define TABLETBUTTON6 9
-#define TABLETBUTTON7 7
-#define TABLETBUTTON8 8
-
 #include <stdio.h>
 #include <wchar.h>
 #include <string.h>
@@ -32,6 +23,7 @@
 #include <ApplicationServices/ApplicationServices.h>
 #include "hidapi.h"
 #include "loadsettings.h"
+#include "buttons.h"
 
 
 
@@ -64,7 +56,7 @@ int buttonRightDown = 0;
 CGEventRef moveMouse;
 CGEventRef leftMouse;
 CGEventRef rightMouse;
-CGEventRef keyboardKey;
+
 
 
 struct hid_device_info;
@@ -73,8 +65,7 @@ double screenSpan;
 
 double valueScaled;
 
-int keyboard = 0;
-CGKeyCode keycode;
+
 
 int tabletDeviceOpen = 0;
 int tabletDataReceived = 0;
