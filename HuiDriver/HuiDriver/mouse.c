@@ -45,7 +45,6 @@ void doMouseMoveDrag(double x, double y, double pressure) {
     CGEventSetIntegerValueField(leftMouse, kCGMouseEventSubtype, kCGEventMouseSubtypeTabletPoint);
 
     if(buttonLeftDown == 0) {
-//        printf("here\n");
         buttonLeftDown = 1;
         CGEventSetLocation(leftMouse, CGPointMake(x, y));
         CGEventSetType(leftMouse, kCGEventLeftMouseDown);

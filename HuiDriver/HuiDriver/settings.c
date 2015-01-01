@@ -90,5 +90,4 @@ void loadSettings() {
     }
 
     config_destroy(&cfg);
-
 }

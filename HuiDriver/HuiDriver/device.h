@@ -3,6 +3,8 @@
 
 #define SLEEPTIME 1200
 #include "hidapi.h"
+#include "mouse.h"
+#include "settings.h"
 #include <unistd.h>
 #include <string.h>
 

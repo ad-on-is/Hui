@@ -1,6 +1,4 @@
 #include "device.h"
-#include "mouse.h"
-#include "settings.h"
 
 
 int initDevice() {

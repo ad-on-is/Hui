@@ -13,6 +13,7 @@
 #define PENBUTTON_TIPBUTTON2 197
 
 #include <ApplicationServices/ApplicationServices.h>
+#include "math.h"
 
 int buttonLeftDown;
 int buttonRightDown;

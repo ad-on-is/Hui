@@ -26,5 +26,4 @@ int leftMode;
 
 void loadSettings();
 
-
 #endif
