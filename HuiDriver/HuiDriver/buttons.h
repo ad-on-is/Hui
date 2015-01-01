@@ -11,15 +11,16 @@
 #define TABLETBUTTON8 8
 
 #include <ApplicationServices/ApplicationServices.h>
+#include "settings.h"
 
 CFMachPortRef      eventTap;
 CGEventMask        eventMask;
 CFRunLoopSourceRef runLoopSource;
-
+CGEventRef keyButton, cmdButton, altButton, shiftButton, ctrlButton;
+CGEventSourceRef src;
 int keyboard;
 CGKeyCode keycode;
 
-CGEventRef keyboardKey;
 
 void handleButtons();
 

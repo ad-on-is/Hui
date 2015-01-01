@@ -1,37 +1,110 @@
 #include "buttons.h"
 
 
+int i;
+int cb;
+
+void handleKeyDown(CGKeyCode kc) {
+    for(i = 0; i<8; i++) {
+        if(tabletButtons[i].input == kc) {
+            cb = i;
+            break;
+        }
+    }
+    if(tabletButtons[cb].pressed == 0) {
+        tabletButtons[cb].pressed = 1;
+
+        if(tabletButtons[cb].key >= 0) {
+            // press key
+            src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+            keyButton = CGEventCreateKeyboardEvent(src, (CGKeyCode)tabletButtons[cb].key, true);
+
+            printf("%d", (CGKeyCode)tabletButtons[cb].key);
+        }
+
+        if(tabletButtons[cb].cmd == 1) {
+            cmdButton = CGEventCreateKeyboardEvent(src, 0x37, true);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskCommand);
+            CGEventPost(kCGHIDEventTap, cmdButton);
+        }
+        if(tabletButtons[cb].alt == 1) {
+            altButton = CGEventCreateKeyboardEvent(src, 0x3A, true);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskAlternate);
+            CGEventPost(kCGHIDEventTap, altButton);
+        }
+        if(tabletButtons[cb].shift == 1) {
+            shiftButton = CGEventCreateKeyboardEvent(src, 0x38, true);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskShift);
+            CGEventPost(kCGHIDEventTap, shiftButton);
+        }
+        if(tabletButtons[cb].ctrl == 1) {
+            ctrlButton = CGEventCreateKeyboardEvent(src, 0x3B, true);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskControl);
+            CGEventPost(kCGHIDEventTap, ctrlButton);
+        }
+
+
+        CGEventPost(kCGHIDEventTap, keyButton);
+        printf("pressed: %d\n", kc);
+    }
+}
+
+void handleKeyUp(CGKeyCode kc) {
+    if(tabletButtons[cb].pressed == 1) {
+        tabletButtons[cb].pressed = 0;
+        if(tabletButtons[cb].key >= 0) {
+            // press key
+            keyButton = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)tabletButtons[cb].key, false);
+        }
+        if(tabletButtons[cb].cmd == 1) {
+            cmdButton = CGEventCreateKeyboardEvent(src, 0x37, false);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskCommand);
+            CGEventPost(kCGHIDEventTap, cmdButton);
+        }
+        if(tabletButtons[cb].alt == 1) {
+            altButton = CGEventCreateKeyboardEvent(src, 0x3A, false);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskAlternate);
+            CGEventPost(kCGHIDEventTap, altButton);
+        }
+        if(tabletButtons[cb].shift == 1) {
+            shiftButton = CGEventCreateKeyboardEvent(src, 0x38, false);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskShift);
+            CGEventPost(kCGHIDEventTap, shiftButton);
+        }
+        if(tabletButtons[cb].ctrl == 1) {
+            ctrlButton = CGEventCreateKeyboardEvent(src, 0x3B, false);
+            CGEventSetFlags(keyButton, kCGEventFlagMaskControl);
+            CGEventPost(kCGHIDEventTap, ctrlButton);
+        }
+        CGEventPost(kCGHIDEventTap, keyButton);
+        printf("released\n");
+    }
+}
+
+
 CGEventRef ButtonsEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     // Paranoid sanity check.
     if ((type != kCGEventKeyDown) && (type != kCGEventKeyUp))
         return event;
 
     keyboard = CGEventGetIntegerValueField(event, kCGKeyboardEventKeyboardType);
+    keycode = (CGKeyCode) CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
 
     if (keyboard != 40) {
         return event;
     }
 
-    keycode = (CGKeyCode) CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
 
-    printf("%d\n", keycode);
-
-
-    // Swap 'a' (keycode=0) and 'z' (keycode=6).
-//    if (keycode == (CGKeyCode)0)
-//        keycode = (CGKeyCode)6;
-//    else if (keycode == (CGKeyCode)6)
-//        keycode = (CGKeyCode)0;
-
-
-    if (keycode == TABLETBUTTON1 || keycode == TABLETBUTTON2 || keycode == TABLETBUTTON3 || keycode == TABLETBUTTON4 || keycode == TABLETBUTTON5 || keycode == TABLETBUTTON6 || keycode == TABLETBUTTON7 || keycode == TABLETBUTTON8) {
-        return false;
+//    printf("%d\n", keycode);
+    if(type == kCGEventKeyDown) {
+        handleKeyDown(keycode);
     }
-    // Set the modified keycode field in the event.
-//    CGEventSetIntegerValueField(event, kCGKeyboardEventKeycode, (int64_t) keycode);
 
-    // We must return the event for it to be useful.
-    return event;
+    if(type == kCGEventKeyUp) {
+        handleKeyUp(keycode);
+    }
+
+    return false;
 }
 
 
