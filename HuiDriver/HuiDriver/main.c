@@ -47,13 +47,7 @@ Kecodes:
 
 
 
-#include <stdio.h>
-#include <wchar.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-#include <unistd.h>
-#include <ApplicationServices/ApplicationServices.h>
+
 
 #include "device.h"
 #include "settings.h"
