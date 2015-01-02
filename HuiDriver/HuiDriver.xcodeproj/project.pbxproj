@@ -14,6 +14,7 @@
 		AB3B64DFD7E3E772D553EFC9 /* device.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6736B7657E7D2C7F1020 /* device.c */; };
 		AB3B67190287D4CEE4290CCF /* buttons.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B699F3582DFF701B5CE0A /* buttons.c */; };
 		AB3B6B519F20023EFE7580E4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B6A6A8C0039B96B05E571 /* main.c */; };
+		AB3B6F5EFFE6D66B04219861 /* keycommand.c in Sources */ = {isa = PBXBuildFile; fileRef = AB3B69AA3CD296F11641ABA4 /* keycommand.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		AB3B68F368F407C404A22649 /* currentTablet.cfg */ = {isa = PBXFileReference; lastKnownFileType = file.cfg; path = currentTablet.cfg; sourceTree = "<group>"; };
 		AB3B6955EB83CCD5CF3C0B88 /* LICENSE-bsd.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-bsd.txt"; sourceTree = "<group>"; };
 		AB3B699F3582DFF701B5CE0A /* buttons.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buttons.c; sourceTree = "<group>"; };
+		AB3B69AA3CD296F11641ABA4 /* keycommand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = keycommand.c; sourceTree = "<group>"; };
 		AB3B69DB5F1992B2C62DA81B /* LICENSE-gpl3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-gpl3.txt"; sourceTree = "<group>"; };
 		AB3B6A6A8C0039B96B05E571 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		AB3B6AEF5AE15692578B06C0 /* LICENSE-orig.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-orig.txt"; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		AB3B6DEBD145489B18A6A7D4 /* settings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = settings.c; sourceTree = "<group>"; };
 		AB3B6DF3C05990CE3B713734 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		AB3B6F4E358691F0C99EB2AE /* mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mouse.h; sourceTree = "<group>"; };
+		AB3B6FE1626491AEC7EAFE15 /* keycommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keycommand.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 				AB3B6CCA7189E918FC3DC4B2 /* mouse.c */,
 				AB3B6D9633BC1C5C830D5789 /* device.h */,
 				AB3B6736B7657E7D2C7F1020 /* device.c */,
+				AB3B6FE1626491AEC7EAFE15 /* keycommand.h */,
+				AB3B69AA3CD296F11641ABA4 /* keycommand.c */,
 			);
 			path = HuiDriver;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				AB3B67190287D4CEE4290CCF /* buttons.c in Sources */,
 				AB3B61BE085F92044CF72215 /* mouse.c in Sources */,
 				AB3B64DFD7E3E772D553EFC9 /* device.c in Sources */,
+				AB3B6F5EFFE6D66B04219861 /* keycommand.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
