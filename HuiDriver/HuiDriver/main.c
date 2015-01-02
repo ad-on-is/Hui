@@ -38,10 +38,8 @@ Kecodes:
 
 
 @TODO:
-- actions for tablet buttons (cmd, alt, keycode, ...)
-- write enums
-- leftmode
-- config file
+
+- predefined actions (copy, paste, etc)
 
 ********************************************************/
 
